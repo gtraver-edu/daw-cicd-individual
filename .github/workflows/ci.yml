@@ -1,18 +1,7 @@
-# =============================================================
-# WORKFLOW DE INTEGRACIÓN CONTINUA (CI)
-# =============================================================
-# Este workflow se ejecuta cuando se abre un Pull Request.
-# Valida que los archivos del proyecto sean correctos.
-#
-# TODO: Completa las líneas marcadas con ____ para que funcione.
-# =============================================================
-
 name: CI - Validacion en Pull Request
 
-# TODO 1: Sustituye ____ por el evento correcto.
-# Pregunta: ¿Cuál se activa cuando alguien ABRE un Pull Request?
 on:
-  ____:
+  pull_request: # TODO 1: Se activa al abrir un Pull Request
     branches: [ main ]
 
 jobs:
@@ -42,8 +31,6 @@ jobs:
 
       - name: Verificar que el nombre ha sido personalizado
         run: |
-          # Este paso comprueba que has cambiado "TU_NOMBRE" en index.html.
-          # Si aún aparece "TU_NOMBRE", el CI fallará.
           if grep -q "TU_NOMBRE" index.html; then
             echo "❌ Aún no has cambiado TU_NOMBRE en index.html"
             exit 1

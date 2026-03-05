@@ -1,27 +1,14 @@
-# =============================================================
-# WORKFLOW DE DESPLIEGUE CONTINUO (CD)
-# =============================================================
-# Este workflow despliega la web en GitHub Pages automáticamente
-# cuando se fusiona código en la rama principal.
-#
-# TODO: Completa las líneas marcadas con ____ para que funcione.
-# =============================================================
-
 name: CD - Despliegue a GitHub Pages
 
-# TODO 1: Sustituye ____ por el evento correcto.
-# Pregunta: Cuando fusionas un PR, ¿qué evento se produce en la rama main?
 on:
-  ____:
+  push: # TODO 1: Se activa al fusionar (hacer push) en main
     branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      # TODO 2: Sustituye ____ por el permiso correcto.
-      # El workflow necesita CREAR la rama gh-pages.
-      contents: ____
+      contents: write # TODO 2: Permiso para crear la rama gh-pages
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v4
@@ -30,8 +17,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # TODO 3: Sustituye ____ por el directorio que contiene los archivos a publicar.
-          # PISTA: Los archivos (index.html, style.css) están en la raíz del proyecto.
-          # ¿Cómo se referencia el directorio actual en Linux?
-          publish_dir: ____
+          publish_dir: . # TODO 3: Directorio actual (raíz)
           publish_branch: gh-pages
